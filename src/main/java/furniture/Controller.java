@@ -3,13 +3,17 @@ package furniture;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+
+@RequestMapping("/furniture")
 public class Controller {
 
     @Autowired
@@ -27,7 +31,7 @@ public class Controller {
         return categoryRepository.findAll();
     }
 
-    @RequestMapping("/furniture")
+    @RequestMapping("/all")
     public List<Furniture> getAllItems() {
         List<Furniture> list = furnitureRepository.findAll();
         return list;
@@ -37,4 +41,12 @@ public class Controller {
     public List<SubCategory> getSubCatAll() {
         return subCategoryRepository.findAll();
     }
+
+    @RequestMapping("/{id}")
+    public Optional<Furniture> findItemById(@PathVariable("id")Integer id){
+        Optional<Furniture> f1=furnitureRepository.findById(id);
+        return f1;
+    }
+
+
 }
