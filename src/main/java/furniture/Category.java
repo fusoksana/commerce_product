@@ -12,6 +12,17 @@ public class Category {
     private int categoryID;
     private String categoryName;
 
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="categoryId")
+    private List<SubCategory> subCategories = new ArrayList<>();
+
+    public List<SubCategory> getSubCategories() {
+        return subCategories;
+    }
+
+    public void setSubCategories(List<SubCategory> subCategories) {
+        this.subCategories = subCategories;
+    }
+
 
     public Category() {
     }

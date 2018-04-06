@@ -8,8 +8,16 @@ public class SubCategory {
     private int subCategoryId;
     private int categoryId;
     private String name;
+
     public SubCategory(){}
 
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
 
 
     public int getSubCategoryId() {
