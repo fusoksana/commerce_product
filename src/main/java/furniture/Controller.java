@@ -48,5 +48,11 @@ public class Controller {
         return f1;
     }
 
+    @RequestMapping("/cat/{categoryID}")
+    public List<Furniture> findAllByCategory(@PathVariable("categoryID")Integer categoryID){
+        Category category=new Category();
+        category=categoryRepository.findByCategoryID(categoryID);
+        return furnitureRepository.findByCategory(category);
+    }
 
 }
