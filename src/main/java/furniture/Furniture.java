@@ -16,15 +16,15 @@ public class Furniture {
     private Category category;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id", nullable = false)
-    private SubCategory subcategory;
+    private SubCategory subCategory;
     private String name;
     private String manufacturer;
     private String size;
     private int availability;
     private String description;
 
-    public SubCategory getSubcategory() {
-        return subcategory;
+    public SubCategory getSubCategory() {
+        return subCategory;
     }
 
     public Category getCategory() {

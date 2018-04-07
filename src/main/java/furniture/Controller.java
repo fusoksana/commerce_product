@@ -54,5 +54,11 @@ public class Controller {
         category=categoryRepository.findByCategoryID(categoryID);
         return furnitureRepository.findByCategory(category);
     }
+    @RequestMapping("/subCat/{subCatId}")
+    public List<Furniture> findAllBySubCaregoryId(@PathVariable("subCatId")Integer subCategoryId){
+        SubCategory subcategory=new SubCategory();
+        subcategory=subCategoryRepository.findBySubCategoryId(subCategoryId);
+        return furnitureRepository.findBySubCategory(subcategory);
+    }
 
 }
