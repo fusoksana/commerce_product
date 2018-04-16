@@ -1,13 +1,10 @@
 package com.mebli.domain;
 
-import com.mebli.domain.SubCategory;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-
 public class Category {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
