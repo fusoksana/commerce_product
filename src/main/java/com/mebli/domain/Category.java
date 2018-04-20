@@ -10,7 +10,6 @@ public class Category {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int categoryID;
     private String categoryName;
-
     @OneToMany(fetch = FetchType.LAZY,mappedBy="categoryId")
     private List<SubCategory> subCategories = new ArrayList<>();
 
@@ -22,10 +21,8 @@ public class Category {
         this.subCategories = subCategories;
     }
 
-
     public Category() {
     }
-
     public int getCategoryID() {
         return categoryID;
     }

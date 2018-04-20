@@ -1,11 +1,15 @@
 package com.mebli.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Furniture {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Min(0)
     private int itemId;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryid", nullable = false)
@@ -13,10 +17,15 @@ public class Furniture {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id", nullable = false)
     private SubCategory subCategory;
+    @NotBlank
     private String name;
+    @NotBlank
     private String manufacturer;
+    @NotBlank
     private String size;
+    @Min(0)
     private int availability;
+    @NotBlank
     private String description;
 
     public SubCategory getSubCategory() {
