@@ -1,0 +1,1 @@
+ALTER TABLE etape_prospection CONVERT TO CHARACTER SET utf8;
