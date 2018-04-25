@@ -17,7 +17,7 @@ public class Furniture {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id", nullable = false)
     private SubCategory subCategory;
-    @NotBlank
+    @NotBlank(message="Please enter name")
     private String name;
     @NotBlank
     private String manufacturer;
