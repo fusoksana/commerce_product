@@ -20,16 +20,16 @@ public class FurnitureListingController {
         this.categoryRepository = categoryRepository;
         this.subCategoryRepository = subCategoryRepository;
     }
-    @RequestMapping("/furnitures")
+    @RequestMapping(path = "/furnitures", method = RequestMethod.GET)
     public List<Furniture> getAllItems() {
         return furnitureRepository.findAll();
     }
-    @RequestMapping("/furnitures/categories/{categoryID}")
+    @RequestMapping(path = "/furnitures/categories/{categoryID}",method = RequestMethod.GET)
     public List<Furniture> findAllByCategory(@PathVariable("categoryID")Integer categoryID){
         Category category=categoryRepository.findByCategoryID(categoryID);
         return furnitureRepository.findByCategory(category);
     }
-    @RequestMapping("/furnitures/subcategories/{subCatId}")
+    @RequestMapping(path = "/furnitures/subcategories/{subCatId}",method = RequestMethod.GET)
     public List<Furniture> findAllBySubCategoryId(@PathVariable("subCatId")Integer subCategoryId){
        SubCategory subcategory=subCategoryRepository.findBySubCategoryId(subCategoryId);
         return furnitureRepository.findBySubCategory(subcategory);
