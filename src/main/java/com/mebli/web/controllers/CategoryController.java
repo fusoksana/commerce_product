@@ -6,10 +6,10 @@ import com.mebli.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
 @RestController
 public class CategoryController {
     private CategoryRepository  categoryRepository;
@@ -17,9 +17,8 @@ public class CategoryController {
     public CategoryController(CategoryRepository categoryRepository) {
         this.categoryRepository=categoryRepository;
     }
-    @RequestMapping("/categories")
+    @RequestMapping(path="/categories",method = RequestMethod.GET)
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
-
 }
