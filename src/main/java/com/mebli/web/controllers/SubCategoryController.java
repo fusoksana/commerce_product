@@ -1,7 +1,7 @@
 package com.mebli.web.controllers;
 
-import com.mebli.domain.SubCategory;
-import com.mebli.repository.SubCategoryRepository;
+import com.mebli.dto.SubCategoryDto;
+import com.mebli.service.SubCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,13 +11,15 @@ import java.util.List;
 
 @RestController
 public class SubCategoryController {
-    private SubCategoryRepository subCategoryRepository;
+    private SubCategoryService subCategoryService;
+
     @Autowired
-    public SubCategoryController(SubCategoryRepository subCategoryRepository) {
-        this.subCategoryRepository=subCategoryRepository;
+    public SubCategoryController(SubCategoryService subCategoryService) {
+        this.subCategoryService = subCategoryService;
     }
-    @RequestMapping(path="/subcategories",method = RequestMethod.GET)
-    public List<SubCategory> getSubCatAll() {
-        return subCategoryRepository.findAll();
+
+    @RequestMapping(path = "/subcategories", method = RequestMethod.GET)
+    public List<SubCategoryDto> getSubCatAll() {
+        return subCategoryService.retrieveAll();
     }
 }

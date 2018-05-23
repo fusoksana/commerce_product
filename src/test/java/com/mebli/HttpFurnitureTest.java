@@ -19,7 +19,7 @@ public class HttpFurnitureTest {
     @LocalServerPort
     private int port;
 
-    public static final String HOST = "http://localhost:";
+    private static final String HOST = "http://localhost:";
 
     @Autowired
     private TestRestTemplate restTemplate;

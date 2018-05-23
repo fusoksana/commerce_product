@@ -24,7 +24,7 @@ public class HttpSubCategoryTest {
 
     public static final String HOST = "http://localhost:";
 
-    public void assertThatStatusIsOKAndBodyIsFilled(ResponseEntity<String> response) {
+    private void assertThatStatusIsOKAndBodyIsFilled(ResponseEntity<String> response) {
         assertTrue((response.getStatusCode().equals(HttpStatus.OK)) && (response.getBody().length() >= 5));
     }
 

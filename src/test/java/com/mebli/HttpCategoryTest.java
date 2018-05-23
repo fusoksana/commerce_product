@@ -16,14 +16,14 @@ import static junit.framework.TestCase.assertTrue;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HttpCategoryTest {
 
-    public static final String HOST = "http://localhost:";
+    private static final String HOST = "http://localhost:";
     @LocalServerPort
     private int port;
 
     @Autowired
     private TestRestTemplate restTemplate;
 
-    public void assertThatStatusIsOKAndBodyIsFilled(ResponseEntity<String> response) {
+    private void assertThatStatusIsOKAndBodyIsFilled(ResponseEntity<String> response) {
         assertTrue((response.getStatusCode().equals(HttpStatus.OK)) && (response.getBody().length() >= 5));
     }
 
