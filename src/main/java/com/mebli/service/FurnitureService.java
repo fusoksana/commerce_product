@@ -15,8 +15,8 @@ public interface FurnitureService {
 
     FurnitureDTO retrieveById(Integer id);
 
-    List<FurnitureDTO> retrieveByCategory(Category category);
+    List<FurnitureDTO> retrieveBySubCategory(int subcategoryId);
 
-    List<FurnitureDTO> retrieveBySubCategory(SubCategory subcategory);
+    List<FurnitureDTO> retrieveByCategory(int categoryID);
 
 }

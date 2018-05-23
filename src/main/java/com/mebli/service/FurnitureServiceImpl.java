@@ -1,8 +1,6 @@
 package com.mebli.service;
 
-import com.mebli.domain.Category;
 import com.mebli.domain.Furniture;
-import com.mebli.domain.SubCategory;
 import com.mebli.dto.FurnitureDTO;
 import com.mebli.repository.FurnitureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +15,15 @@ public class FurnitureServiceImpl implements FurnitureService {
 
     private FurnitureRepository furnitureRepository;
 
+    private CategoryService categoryService;
+
+    private SubCategoryService subCategoryService;
+
     @Autowired
-    public FurnitureServiceImpl(FurnitureRepository furnitureRepository) {
+    public FurnitureServiceImpl(FurnitureRepository furnitureRepository, CategoryService categoryService, SubCategoryService subCategoryService) {
         this.furnitureRepository = furnitureRepository;
+        this.categoryService = categoryService;
+        this.subCategoryService = subCategoryService;
     }
 
     @Transactional
@@ -46,16 +50,16 @@ public class FurnitureServiceImpl implements FurnitureService {
 
     @Transactional
     @Override
-    public List<FurnitureDTO> retrieveByCategory(Category category) {
-        List<Furniture> furnitureList = furnitureRepository.findByCategory(category);
+    public List<FurnitureDTO> retrieveByCategory(int categoryID) {
+        List<Furniture> furnitureList = furnitureRepository.findByCategory(categoryService.retrieveCategoryByID(categoryID));
         return transferingListToDTOList(furnitureList);
 
     }
 
     @Transactional
     @Override
-    public List<FurnitureDTO> retrieveBySubCategory(SubCategory subcategory) {
-        List<Furniture> furnitureList = furnitureRepository.findBySubCategory(subcategory);
+    public List<FurnitureDTO> retrieveBySubCategory(int subcategoryId) {
+        List<Furniture> furnitureList = furnitureRepository.findBySubCategory(subCategoryService.retrieveBySubCategoryId(subcategoryId));
         return transferingListToDTOList(furnitureList);
     }
 
